@@ -1,10 +1,6 @@
-.login-background {
-    background-image: url("/assets/images/background-login.svg");
-}
-
 .login-form {
     width: 100%;
-    height: 50%;
+    height: 43%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,4 +9,27 @@
 
 :host ::ng-deep .mat-form-field-flex {
     background-color: white;
+}
+
+:host ::ng-deep .mat-form-field-label {
+    color: #3f51b5;
+}
+
+.background-image {
+    height: 94%;
+    position: fixed;
+}
+
+.form-inputs {
+    margin-top: 100px;
+}
+
+.text-link-fake {
+    cursor: pointer;
+    color: #3f51b5;
+}
+
+.logo-image {
+    height: 7%;
+    float: right;
 }

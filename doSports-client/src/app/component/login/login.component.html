@@ -1,16 +1,32 @@
 <html>
-    <form class="login-form">
+    <img class="logo-image" src="../../../assets/images/logo.png">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-inputs">
             <tr>
                 <mat-form-field appearance="fill">
                     <mat-label>Username</mat-label>
-                    <input matInput style="background-color: none;">
+                    <input matInput type="text" formControlName="username">
                 </mat-form-field>
             </tr>
             <tr>
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput>
+                    <input matInput type="password" formControlName="password">
                 </mat-form-field>
             </tr>
+        </div>
+        <br>
+        <tr>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+        </tr>
+        <br>
+        <tr>
+            <p class="text-link-fake">Create acount</p>
+        </tr>
+        <tr>
+            <p class="text-link-fake">Forget my password</p>
+        </tr>
+
     </form>
+    <img class="background-image" src="../../../assets/images/background-login.svg">
 </html>
