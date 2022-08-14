@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
-import { SnackBarComponentComponent } from '../utilities/snack-bar-component/snack-bar-component.component';
 
 @Component({
   selector: 'login',
@@ -14,10 +12,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup('');
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private loginService: LoginService,
-    private router:Router,
-    private snackBar: MatSnackBar) {
+    private router:Router) {
   }
 
   ngOnInit(): void {
@@ -38,9 +36,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/apHome']);
         } else {
           console.log('Loggin fail');
-          this.snackBar.openFromComponent(SnackBarComponentComponent, {
-            duration: 500000,
-          });
         }
       }, error: (error) => {
         console.log('Error => ', error);
