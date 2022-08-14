@@ -4,6 +4,7 @@ import com.treinamento.dosports.dto.LoginDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,7 @@ public class LoginController {
     private String LOGIN_FAILED_MESSAGE;
     
     
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity login(@RequestBody LoginDTO login) {
         boolean access = false;
         
