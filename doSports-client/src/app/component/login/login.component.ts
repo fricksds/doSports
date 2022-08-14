@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
+import { SnackBarComponentComponent } from '../utilities/snack-bar-component/snack-bar-component.component';
 
 @Component({
   selector: 'login',
@@ -9,16 +12,18 @@ import { LoginService } from 'src/app/service/login/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup = new FormGroup(''); 
+  loginForm: FormGroup = new FormGroup('');
 
   constructor(private fb: FormBuilder,
-    private loginService: LoginService) { 
+    private loginService: LoginService,
+    private router:Router,
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
     this.setupLoginForm();
   }
-  
+
   setupLoginForm(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -27,12 +32,19 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
-    this.loginService.authentication(this.loginForm.value)?.subscribe(response => {
-      console.log('Success => ', response);
-    }, error => {
-      console.log('Error => ', error);
+    this.loginService.authentication(this.loginForm.value)?.subscribe({
+      next: (response) => {
+        if(response) {
+          this.router.navigate(['/apHome']);
+        } else {
+          console.log('Loggin fail');
+          this.snackBar.openFromComponent(SnackBarComponentComponent, {
+            duration: 500000,
+          });
+        }
+      }, error: (error) => {
+        console.log('Error => ', error);
+      }
     });
   }
-
 }
