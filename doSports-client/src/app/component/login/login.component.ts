@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationComponent } from 'src/app/config/notification/notification.component';
 import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router:Router) {
+    private router:Router,
+    private notification: NotificationComponent) {
   }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
   setupLoginForm(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,16}$')])],
+      password: ['', Validators.compose([Validators.required])]//, Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,16}$')])],
     });
   }
 
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/apHome']);
         } else {
           console.log('Loggin fail');
+          this.notification.error('usarname or password invalid');
         }
       }, error: (error) => {
         console.log('Error => ', error);
