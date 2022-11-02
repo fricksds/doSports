@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 public class LoginController {
     
-    private static final String USERNAME = "fricksds";
-    private static final String PASSWORD = "Dragao@22";
+    private static final String USERNAME = "fricks";
+    private static final String PASSWORD = "1234";
     
     @Value("${message.login.success}")
     private String LOGIN_SUCCESS_MESSAGE;
