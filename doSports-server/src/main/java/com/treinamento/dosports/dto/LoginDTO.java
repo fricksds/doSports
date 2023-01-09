@@ -20,6 +20,6 @@ public class LoginDTO {
     private String username;
     
     @NotNull
-    @Size(min = 8, max = 16, message = "Password must be a minimum of 8 and a maximum of 16 characters")
+    @Size(min = 2, max = 16, message = "Password must be a minimum of 8 and a maximum of 16 characters")
     private String password;
 }

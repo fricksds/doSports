@@ -4,6 +4,7 @@ import com.treinamento.dosports.dto.LoginDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,7 @@ public class LoginController {
             access = true;
         } else {
             log.error(LOGIN_FAILED_MESSAGE);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falha login");
         }
         
         return ResponseEntity.ok(access);

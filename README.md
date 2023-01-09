@@ -3,3 +3,13 @@ O sistema em questão é uma ferramenta para facilitar e gerenciar o cadastro de
 
 Os documentos e a idéia deste projeto foram elaborados na matéria de Engenharia de Software da professora Monalessa.
 Turma 2017/02
+
+
+-------------------------------------
+Especificações:
+
+Backend:
+Java 17
+
+Frontend:
+Angular 18
